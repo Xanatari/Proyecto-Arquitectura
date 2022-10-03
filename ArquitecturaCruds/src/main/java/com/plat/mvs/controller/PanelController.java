@@ -26,7 +26,6 @@ public class PanelController {
 
     @PostMapping(value = "/new", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity healthCheck (@RequestBody Vms vms){
-
         vmsRepository.save(vms);
         return ResponseEntity.ok(HttpStatus.OK);
     }
