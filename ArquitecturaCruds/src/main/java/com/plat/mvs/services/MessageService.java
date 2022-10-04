@@ -37,6 +37,6 @@ public class MessageService {
 
     public String deleteMessage(Long msgId){
         msgRepository.deleteById(msgId);
-        return "El usuario " + msgId + " ha sido eliminado";
+        return "El mensaje " + msgId + " ha sido eliminado";
     }
 }
