@@ -1,8 +1,8 @@
 package com.plat.mvs.controller;
 
-
+import com.plat.mvs.repository.entities.Sensor;
 import com.plat.mvs.repository.entities.Vms;
-import com.plat.mvs.services.VmsService;
+import com.plat.mvs.services.SensoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -10,12 +10,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/panel")
-public class PanelController {
-
+@RequestMapping(value = "/sensor")
+public class SensoresController {
 
     @Autowired
-    VmsService vmsService;
+    SensoService sensoService;
 
     @GetMapping(value = "/healthCheck")
     public ResponseEntity healthCheck (){
@@ -24,20 +23,20 @@ public class PanelController {
 
 
     @PostMapping(value = "/new", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity healthCheck (@RequestBody Vms vms){
-        vmsService.newVms(vms);
+    public ResponseEntity newSensor (@RequestBody Sensor sensor){
+        sensoService.newSensor(sensor);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
     @PutMapping(value =  "/update")
-    public ResponseEntity updatePanelvms(@RequestBody Vms vms){
-        vmsService.updateVms(vms);
+    public ResponseEntity updateSensor(@RequestBody Sensor sensor){
+        sensoService.updateSensor(sensor);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @GetMapping(value =  "/getVmsbyId/{id}")
-    public ResponseEntity getVmsById(@PathVariable Long id){
-        return ResponseEntity.ok(vmsService.getVmsbyId(id));
+    @GetMapping(value =  "/getSensorbyId/{id}")
+    public ResponseEntity getSensorById(@PathVariable Long id){
+        return ResponseEntity.ok(sensoService.getSensorbyId(id));
     }
 
 }
