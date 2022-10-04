@@ -14,7 +14,6 @@ public class Sensor {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-
     @Column
     private String kilometro;
 
